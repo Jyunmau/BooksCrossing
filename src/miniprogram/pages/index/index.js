@@ -7,7 +7,8 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    postBookIMG: ''
   },
 
   onLoad: function() {
@@ -18,7 +19,7 @@ Page({
       return
     }
 
-    // 获取用户信息
+    // 获取本地用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -46,23 +47,63 @@ Page({
     }
   },
 
+  // 获取openid
   onGetOpenid: function() {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
+        console.log('[云函数] [login] user openid: ', res.result)
         app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
+      }
+    })
+  },
+
+  // 用户注册
+  doSignUp: function() {
+    wx.cloud.callFunction({
+      name: 'signUp',
+      data: {
+        openid: 'test_openid-1',     // 需要先获取openid 
+        phone: 12345,     // 需要input获取
+        nickName: '用户昵称（test-1）'    // 需要input获取
+      },
+      success: res => {
+        console.log('用户注册：', res)
+        // 获取成功后的逻辑
+        if (res.result == "duplication") {
+          // openid重复的处理逻辑
+          console.log("重名！")
+        }
+      },
+      fail: err => {
+        console.log('用户注册失败：', err)
+        // 获取失败后的逻辑
+      }
+    })
+  },
+
+  // 获取云端（已注册）用户信息
+  doGetUserInfo: function() {
+    wx.cloud.callFunction({
+      name: 'getUserInfo',
+      data: {
+        openid: 'test_openid-1'
+      },
+      success: res => {
+        console.log('用户信息：', res)
+        // 获取成功后的逻辑
+        if (res.result.data.length==0) {
+          console.log("未注册！")
+          // 未注册处理逻辑
+        }
+      },
+      fail: err => {
+        console.log('用户信息获取失败', err)
       }
     })
   },
@@ -89,14 +130,14 @@ Page({
           filePath,
           success: res => {
             console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
+            this.setData({
+              postBookIMG: cloudPath
             })
+
+            // app.globalData.fileID = res.fileID
+            // app.globalData.cloudPath = cloudPath
+            // app.globalData.imagePath = filePath
+
           },
           fail: e => {
             console.error('[上传文件] 失败：', e)
