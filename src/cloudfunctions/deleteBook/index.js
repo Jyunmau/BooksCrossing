@@ -1,15 +1,14 @@
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
-const _ = db.command
 exports.main = async (event, context) => {
   try {
-    return await db.collection('bookList').where(_.or([
+    return await db.collection('bookList').where(db.command.or([
       {
         publisher: event.hasOwnProperty("publisher") ? event.publisher : ''
       },
       {
-        phone: event.hasOwnProperty("phone") ? event.phone : 0
+        _id: event.hasOwnProperty("id") ? event.id : ''
       },
       {
         bookName: event.hasOwnProperty("bookName") ? event.bookName : ''
@@ -20,7 +19,7 @@ exports.main = async (event, context) => {
       {
         borrower: event.hasOwnProperty("borrower") ? event.borrower : ''
       }
-    ])).get()
+    ])).remove()
   } catch (e) {
     console.error(e)
   }

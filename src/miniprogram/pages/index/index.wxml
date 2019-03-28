@@ -36,4 +36,44 @@
     <text>上传用户信息</text>
   </button>
 
+  <!-- 获取书籍列表 -->
+  <button bindtap='doGetBookList' style='margin-top: 40rpx;'>
+    <text>获取书籍列表</text>
+  </button>
+
+  <!-- 搜索书籍 -->
+  <button bindtap='doSearchBooks' style='margin-top: 40rpx;'>
+    <text>搜索书籍</text>
+  </button>
+
+  <!-- 上传书籍 -->
+  <button bindtap='doPostBook' style='margin-top: 40rpx;'>
+    <text>上传书籍</text>
+  </button>
+
+  <!-- 删除书籍 -->
+  <button bindtap='doDeleteBook' style='margin-top: 40rpx;'>
+    <text>删除书籍</text>
+  </button>
+
+  <!-- 预定书籍 -->
+  <button bindtap='doBookBook' style='margin-top: 40rpx;'>
+    <text>预定书籍</text>
+  </button>
+  
+  <!-- 取消预定书籍 -->
+  <button bindtap='doCancelBook' style='margin-top: 40rpx;'>
+    <text>取消预定书籍</text>
+  </button>
+
+  <!-- 借阅书籍 -->
+  <button bindtap='doBorrowBook' style='margin-top: 40rpx;'>
+    <text>借阅书籍</text>
+  </button>
+
+  <!-- 归还书籍 -->
+  <button bindtap='doReturnBook' style='margin-top: 40rpx;'>
+    <text>归还书籍</text>
+  </button>
+
 </view>
