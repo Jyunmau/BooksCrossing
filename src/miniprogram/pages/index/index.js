@@ -10,6 +10,11 @@ Page({
     requestResult: '',
     postBookIMG: ''
   },
+  jumpPage: function () {
+    wx.navigateTo({
+      url: '/pages/details/details',
+    })
+  },
 
   onLoad: function() {
     if (!wx.cloud) {

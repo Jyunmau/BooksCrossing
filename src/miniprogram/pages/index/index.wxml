@@ -83,4 +83,9 @@
     <text>归还书籍</text>
   </button>
 
+  <view class="uploader">
+    <button class="" bindtap='jumpPage'>测试</button>
+      
+  </view>
+
 </view>

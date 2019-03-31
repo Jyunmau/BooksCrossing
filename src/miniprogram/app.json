@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/listpage/listpage",
     "pages/add/add",
     "pages/individual/individual",
-    "pages/index/index"
+    "pages/details/details"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -33,5 +34,4 @@
     }
     ]
   }
-
 }
