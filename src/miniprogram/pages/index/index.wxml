@@ -40,4 +40,9 @@
     </navigator>
   </view>
 
+  <view class="uploader">
+    <button class="" bindtap='jumpPage'>测试</button>
+      
+  </view>
+
 </view>
