@@ -1,0 +1,6 @@
+/* miniprogram/pages/listpage/listpage.wxss */
+@import"colorui.wxss";
+@import"icon.wxss";
+.padding {
+  padding: 80rpx;
+}
