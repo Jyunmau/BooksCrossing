@@ -1,0 +1,30 @@
+<!--miniprogram/pages/details/details.wxml-->
+
+
+<view class="mainclass">  
+
+    <view class='imgmarclass'>
+      <image src='/pages/details/defaultimg.jpg' class='imgclass' mode='widthFix'></image>
+    </view>   
+    
+    <view class="padding align-start flex solid-bottom listclass">     
+        <view class='margin-xs myclass3'>书名：</view>     
+    </view>
+    <view class="padding align-start flex solid-bottom listclass">     
+        <view class='margin-xs myclass3'>介绍：</view>     
+    </view>
+    <view class="padding align-start flex solid-bottom listclass">     
+        <view class='margin-xs myclass3'>发布者联系方式：</view>     
+    </view>
+    <view class="padding align-start flex solid-bottom listclass">     
+        <view class='margin-xs myclass3'>list item</view>     
+    </view>
+    <button class="buttonclass" bindtap='modalinput'>
+      借阅
+    </button>
+    <modal id="modal" hidden="{{hiddenmodalput}}" title="请输入借书码" confirm-text="确定"  cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+      <input  class='inputclass' type='text' placeholder="4位借书码" auto-focus/>
+    </modal>
+
+    
+</view>
