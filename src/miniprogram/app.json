@@ -2,8 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
-    "pages/bookBook/bookBook"
-
+    "pages/bookBook/bookBook",
+    "pages/listpage/listpage",
+    "pages/add/add",
+    "pages/individual/individual",
+    "pages/details/details"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -11,5 +14,26 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "图书漂流",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/listpage/listpage",
+      "text": "书库",
+      "iconPath": "images/1/book1.png",
+      "selectedIconPath": "images/1/book2.png"
+    },
+    {
+      "pagePath": "pages/add/add",
+      "text": "添加",
+      "iconPath": "images/1/add1.png",
+      "selectedIconPath": "images/1/add2.png"
+    },
+    {
+      "pagePath": "pages/individual/individual",
+      "text": "个人",
+      "iconPath": "/images/1/individual1.png",
+      "selectedIconPath": "/images/1/individual2.png"
+    }
+    ]
   }
 }

@@ -1,0 +1,46 @@
+/* miniprogram/pages/details/details.wxss */
+.mainclass{
+  padding: 20px;
+  margin-top: 1px;
+  background: rgb(246, 246, 246);
+  
+}
+.listclass{
+  margin: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background: rgb(255, 255, 255);
+  box-shadow:0.5px 0.5px rgb(201, 200, 200);
+  color:rgb(99, 99, 99);
+  font-size: 13px;
+}
+.buttonclass{
+  margin-top: 25px;
+  margin-bottom: 15px;
+
+  text-align: center;  
+  
+  background: rgb(0,122,255);
+  
+  color:rgb(255,255,255);
+  font-size: 17px;
+}
+.imgmarclass{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 5px; 
+  background: rgb(255, 255, 255);
+  box-shadow:0.5px 0.5px rgb(201, 200, 200);
+}
+.imgclass{
+  width: 100%;
+}
+.inputclass{
+  margin-top: 10px;
+  padding: 5px; 
+  height: 30px;
+  background:  rgb(236, 236, 236);
+  font-size: 15px;
+}
