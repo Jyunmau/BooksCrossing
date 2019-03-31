@@ -1,19 +1,9 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/listpage/listpage",
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
     "pages/add/add",
-    "pages/individual/individual"
-=======
+    "pages/individual/individual",
     "pages/index/index"
->>>>>>> ccb4080354ddfd614aa9107785d8d24c5ff31934
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
