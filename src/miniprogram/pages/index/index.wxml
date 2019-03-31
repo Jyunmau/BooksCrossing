@@ -11,6 +11,7 @@
     ></button>
     <view>
       <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+      <navigator url='../login/login'>登陆</navigator>
     </view>
   </view>
 
