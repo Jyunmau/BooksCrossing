@@ -37,6 +37,7 @@
       <text>快速新建云函数</text>
     </navigator>
   </view>
+
   <!-- 上传用户信息 -->
   <button bindtap='doSignUp' style='margin-top: 40rpx;'>
     <text>上传用户信息</text>
@@ -82,5 +83,4 @@
     <text>归还书籍</text>
   </button>
 
->>>>>>> ccb4080354ddfd614aa9107785d8d24c5ff31934
 </view>
