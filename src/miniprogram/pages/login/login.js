@@ -39,7 +39,7 @@ Page({
             }
           })
           wx.navigateTo({
-            url: '/pages/bookBook/bookBook'
+            url: '/pages/listpage/listpage'
           })
         }
       }
@@ -88,8 +88,8 @@ Page({
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       }),
-      wx.navigateTo({
-        url: '/pages/bookBook/bookBook'
+      wx.switchTab({
+        url: '../listpage/listpage',
       })
     }
   },
