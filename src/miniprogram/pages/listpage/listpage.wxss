@@ -2,5 +2,11 @@
 @import"colorui.wxss";
 @import"icon.wxss";
 .padding {
-  padding: 80rpx;
+  padding: 20rpx;
+}
+.text-limit-short {
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

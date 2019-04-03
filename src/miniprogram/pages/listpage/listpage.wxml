@@ -3,7 +3,7 @@
   <view class="cu-bar search bg-white">
     <view class='search-form round'>
       <text class="icon-search"></text>
-      <input type="text" placeholder="搜索图书名称" confirm-type="search"></input>
+      <input type="text" placeholder="搜索图书名称" confirm-type="search" bindblur='getSearchText'></input>
     </view>
     <view class='action'>
       <button class='cu-btn bg-green shadow-blur round' bindtap='doSearchBooks'>搜索</button>
@@ -11,11 +11,17 @@
   </view>
 </view>
 
-<view class='grid col-3 padding-sm'>
-  <view class='padding-sm' wx:for="{{bookList}}" wx:key>
-    <button class='bg-grey} padding radius text-center shadow-blur'>
-      <view class="text-lg">{{item.title}}</view>
-    </button>
+<view class='grid col-3 padding-sm grid-square'>
+  <view class='padding-sm'  wx:for="{{bookList}}" wx:key='{{index}}'>
+    <view bindtap='turn2Detail' id='{{index}}'>
+      <image src='{{item.imgURL}}' mode="aspectFill"></image>
+    </view>
+    <!-- <view class="text-center text-limit-short">{{item.bookName}}</view> -->
   </view>
+</view>
+
+<view class="padding-xl">
+  <button class='cu-btn block bg-green margin-tb-sm lg' bindtap='getMoreBook'>
+    <text class='icon-rounddown'></text> 加载更多</button>
 </view>
 

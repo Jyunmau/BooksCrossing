@@ -5,159 +5,118 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookList: [{
-      title: '书1',
-    
-    },
-    {
-      title: '书2',
-     
-    },
-    {
-      title: '书3',
-   
-    },
-    {
-      title: '书4',
-   
-    },
-   
-    {
-      title: '书5',
- 
-    },
-    {
-      title: '书6',
-  
-    },
-    {
-      title: '书7',
-  
-    },
-    {
-      title: '书8',
-  
-    },
-    {
-      title: '书9',
-    
-    },
-    {
-      title: '书10',
-   
-    },
-    {
-      title: '书11',
-  
-    },
-    {
-      title: '书12',
-     
-    },
-    {
-      title: '书13',
-    
-    },
-    {
-      title: '书14',
-     
-    },
-     {
-      title: '书15',
-     },
-    ]
+    bookList: [],
+    pageNum: 0,
+    searchText: '',
+    isEmpty: false
   },
 
   doSearchBooks: function () {
+    this.setData({
+      pageNum: 0
+    })
+    if (!this.data.isEmpty) {
+      console.log(this.data.searchText)
+      wx.cloud.callFunction({
+        name: 'searchBooks',
+        data: {
+          // 这些项可以选填，如果不需要可以不用写某个字段
+          booKName: this.data.searchText,
+          //publisher: "test-openid-1",
+          //state: 'borrowable',
+          //borrower: '',
+          //phone: 11223344
+        },
+        success: res => {
+          console.log('书籍搜索结果：', res)
+          // 获取成功后的逻辑
+          this.setData({
+            bookList: res.result.data
+          })
+        },
+        fail: err => {
+          console.log('书籍搜索失败', err)
+          // 获取失败后的逻辑
+          wx.showToast({
+            title: '搜索失败！',
+            icon: 'none'
+          })
+        }
+      })
+    } else {
+      this.doGetBookList()
+    }
+  },
+
+  getSearchText: function(e) {
+    if (e.detail.value != '') {
+      this.setData({
+        searchText: e.detail.value
+      })
+      this.setData({
+        isEmpty: false
+      })
+    } else {
+      this.setData({
+        isEmpty: true
+      })
+    }
+  },
+
+  turn2Detail: function (e) {
+    console.log(e.currentTarget.id)
+    console.log(this.data.bookList)
+    var id = this.data.bookList[e.currentTarget.id]._id
+    wx.navigateTo({
+      url: '../details/details?id=' + id,
+    })
+  },
+
+  // 获取书籍列表
+  doGetBookList: function () {
     wx.cloud.callFunction({
-      name: 'searchBooks',
+      name: 'getBookList',
       data: {
-        // 这些项可以选填，如果不需要可以不用写某个字段
-        publisher: 'test-2',
-        //bookName: '计算机操作系统',
-        //state: 'borrowable',
-        //borrower: '',
-        //phone: 11223344
+        pageNum: this.data.pageNum     // 要获取第几页的数据，从0开始
       },
       success: res => {
-        console.log('书籍搜索结果：', res)
+        console.log('书籍列表：', res)
         // 获取成功后的逻辑
+        if (this.data.pageNum == 0) {
+          this.setData({
+            bookList: res.result.data
+          })
+        } else {
+          for (var i = 0; i < res.result.data.length; i++) {
+            this.data.bookList.push(res.result.data[i])
+          }
+          this.setData({
+            bookList: this.data.bookList
+          })
+        }
       },
       fail: err => {
-        console.log('书籍搜索失败', err)
+        console.log('书籍列表获取失败', err)
         // 获取失败后的逻辑
+        wx.showToast({
+          title: '书籍列表获取失败！',
+          icon: 'none'
+        })
       }
     })
-    wx.cloud.uploadFile({
-      cloudPath: 'abc.png', // 上传至云端的路径
-      filePath: '',
-      success: res => {
-        console.log(res.fileID)
-      }
+  },
+
+  getMoreBook: function () {
+    this.setData({
+      pageNum: this.data.pageNum + 1
     })
-    wx.cloud.downloadFile({
-      fileID: '', // 文件 ID
-      success: res => {
-        // 返回临时文件路径
-        console.log(res.tempFilePath)
-      },
-      fail: console.error
-    })
+    this.doGetBookList()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.doGetBookList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

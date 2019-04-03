@@ -4,11 +4,11 @@
 <view class="mainclass">  
 
     <view class='imgmarclass'>
-      <image src='/pages/details/defaultimg.jpg' class='imgclass' mode='widthFix'></image>
+      <image src='{{bookDetail.imgURL}}' class='imgclass' mode='widthFix'></image>
     </view>   
     
     <view class="padding align-start flex solid-bottom listclass">     
-        <view class='margin-xs myclass3'>书名：</view>     
+        <view class='margin-xs myclass3'>书名：{{bookDetail.bookName}}</view>     
     </view>
     <view class="padding align-start flex solid-bottom listclass">     
         <view class='margin-xs myclass3'>介绍：</view>     
