@@ -1,12 +1,6 @@
 /* miniprogram/pages/listpage/listpage.wxss */
-@import"colorui.wxss";
-@import"icon.wxss";
+@import '../../component/colorUI/colorui.wxss';
+@import '../../component/colorUI/icon.wxss';
 .padding {
-  padding: 20rpx;
-}
-.text-limit-short {
-  max-width: 200rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 80rpx;
 }

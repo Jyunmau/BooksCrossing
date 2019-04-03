@@ -88,8 +88,8 @@ Page({
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       }),
-      wx.switchTab({
-        url: '../listpage/listpage',
+      wx.navigateTo({
+        url: '/pages/listpage/listpage'
       })
     }
   },

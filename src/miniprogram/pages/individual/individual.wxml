@@ -1,2 +1,76 @@
 <!--miniprogram/pages/individual/individual.wxml-->
-<text>个人页</text>
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-green cur':''}}'" wx:for="{{tabc}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+
+<view class="cu-card article " >
+  <view wx:for="{{lendbookmsg}}"  wx:if="{{TabCur==0}}" wx:key class="cu-item shadow">
+    <view class="title">{{item.bookname}}</view>
+    <view class="content">
+      <image src="{{item.imgURL}}" mode="aspectFill"></image>
+      <view class="desc">
+ 
+        <text class='text-gray'>联系方式：{{item.borrowPhone}}</text>
+        <text class='text-gray'>借出时间：{{item.borrowTime}}</text>
+        <text class='text-gray'>归还时间：{{item.returnTime}}</text>
+       
+        <view class='flex justify-around'>
+          <button class=' cu-btn round shadow line-blue' >已借出</button>
+          <button class=' cu-btn round shadow line-olive' bindtap="returnBook" data-id="{{lendbookmsg[index].bookid}}" data-lendid="{{lendbookmsg[index]._id}}">还书</button> 
+             
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:for="{{mybookmsg}}"  wx:if="{{TabCur==0}}"  wx:key class="cu-item shadow">
+    <view class="title">{{item.bookName}}</view>
+    <view class="content">
+      <image src="{{item.imgURL}}" mode="aspectFill"></image>
+      <view class="desc">
+        <text class='text-gray'>联系方式：-</text>
+        <text class='text-gray'>借出时间：-</text>
+        <text class='text-gray'>归还时间：-</text>
+        <view class='flex justify-around'>  
+        <picker bindchange="PickerChange" value="{{state}}"  data-id='{{item._id}}' range="{{picker}}">
+          <button class=' cu-btn round shadow line-cyan'>{{item.state=='borrowable'?'可借':'已锁定'}}</button>
+        </picker>
+          <button class=' cu-btn round shadow line-red' bindtap='dellend' data-id='{{item._id}}'>下架</button> 
+             
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-card article "   >
+  <view wx:for="{{borrowbookmsg}}"  wx:if="{{TabCur==1}}" wx:key class="cu-item shadow">
+    <view class="title">{{item.bookname}}</view>
+    <view class="content">
+      <image src="{{item.imgURL}}" mode="aspectFill"></image>
+      <view class="desc">
+ 
+        <text class='text-gray'>联系方式：{{item.lendPhone}}</text>
+        <text class='text-gray'>借出时间：{{item.borrowTime}}</text>
+        <text class='text-gray'>归还时间：{{item.returnTime}}</text>
+       
+        <view class='flex justify-around'>
+          <button class=' cu-btn round shadow line-cyan' >待归还</button>
+          <button class=' cu-btn round shadow line-olive' bindtap="checkReturncode" data-id="{{item.bookid}}">还书</button> 
+             
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<modal id="modal" hidden="{{hiddenmodalput}}" title="请输入还书码" confirm-text="确定"  cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+      <input  class='inputclass' type='text' placeholder="4位还书码" bindinput='inputcode' auto-focus/>
+</modal>
+<modal id="modal" hidden="{{borrowhidden}}" no-cancel="true" title="请让对方输入以下还书码" confirm-text="关闭" bindconfirm="borrowconfirm">  
+    <text>{{returncode}}</text>
+</modal>
+<modal id="modal" hidden="{{deletehidden}}" title="确定下架该图书吗？" confirm-text="确定"  cancel-text="取消" bindcancel="canceldel" bindconfirm="confirmdel">  
+</modal>
