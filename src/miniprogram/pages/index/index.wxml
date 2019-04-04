@@ -11,6 +11,7 @@
     ></button>
     <view>
       <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+      <navigator url='../login/login'>登陆</navigator>
     </view>
   </view>
 
@@ -30,6 +31,13 @@
   <button bindtap='doGetUserInfo' style='margin-top: 40rpx;'>
     <text>获取用户信息</text>
   </button> 
+
+  <!-- 新建云函数 -->
+  <view class="uploader">
+    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
+      <text>快速新建云函数</text>
+    </navigator>
+  </view>
 
   <!-- 上传用户信息 -->
   <button bindtap='doSignUp' style='margin-top: 40rpx;'>
@@ -75,5 +83,10 @@
   <button bindtap='doReturnBook' style='margin-top: 40rpx;'>
     <text>归还书籍</text>
   </button>
+
+  <view class="uploader">
+    <button class="" bindtap='jumpPage'>测试</button>
+      
+  </view>
 
 </view>

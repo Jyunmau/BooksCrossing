@@ -1,12 +1,40 @@
 {
   "pages": [
-    "pages/index/index"
+    
+    "pages/listpage/listpage",
+    "pages/bookBook/bookBook",
+    "pages/add/add",
+    "pages/individual/individual",
+    "pages/details/details",
+    "pages/index/index",
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "图书漂流",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/listpage/listpage",
+      "text": "书库",
+      "iconPath": "images/1/book1.png",
+      "selectedIconPath": "images/1/book2.png"
+    },
+    {
+      "pagePath": "pages/add/add",
+      "text": "添加",
+      "iconPath": "images/1/add1.png",
+      "selectedIconPath": "images/1/add2.png"
+    },
+    {
+      "pagePath": "pages/individual/individual",
+      "text": "个人",
+      "iconPath": "/images/1/individual1.png",
+      "selectedIconPath": "/images/1/individual2.png"
+    }
+    ]
   }
 }

@@ -6,19 +6,19 @@ exports.main = async (event, context) => {
   try {
     return await db.collection('bookList').where(_.or([
       {
-        publisher: event.hasOwnProperty("publisher") ? event.publisher : ''
+        publisher: event.hasOwnProperty("publisher") ? event.publisher : 'null'
       },
       {
         phone: event.hasOwnProperty("phone") ? event.phone : 0
       },
       {
-        bookName: event.hasOwnProperty("bookName") ? event.bookName : ''
+        bookName: event.hasOwnProperty("bookName") ? event.bookName : 'null'
       },
       {
-        state: event.hasOwnProperty("state") ? event.state : ''
+        state: event.hasOwnProperty("state") ? event.state : 'null'
       },
       {
-        borrower: event.hasOwnProperty("borrower") ? event.borrower : ''
+        borrower: event.hasOwnProperty("borrower") ? event.borrower : 'null'
       }
     ])).get()
   } catch (e) {

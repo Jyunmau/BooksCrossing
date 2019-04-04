@@ -1,0 +1,34 @@
+<!--pages/login/login.wxml-->
+
+<view class="container">
+
+  <!-- 用户 -->
+  <view class="usericon">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="usericon-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+  </view>
+
+  <!-- 用户信息
+  <view class="userinfo">
+    <view class="userinfo-text">
+      <text>昵 称 ：</text>
+    </view>
+    <view class="userinfo-text">
+      <text>微信号：</text>
+    </view>
+    <view class="userinfo-text">
+      <text>备 注 ：</text>
+    </view>
+  </view>
+ -->
+
+  <!-- 登陆/注册 -->
+  <button style='margin-top: 200rpx;font-size: 36rpx;' type='primary' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    <text> 开 启 图 书 漂 流 之 旅  </text>
+  </button> 
+
+</view>
