@@ -5,9 +5,9 @@ exports.main = async (event, context) => {
   const promise = await db.collection('bookList').where({
     _id: event.id
   }).get()
-  if (promise.data[0].bookID == event.checkCode) {
+  if (promise.data[0]._id == event.checkCode) {
     try {
-      return await db.collection('bookList').where({
+      await db.collection('bookList').where({
         _id: event.id
       })
         .update({
@@ -16,6 +16,10 @@ exports.main = async (event, context) => {
             borrower: ''
           },
         })
+      return await db.collection('borrowList').where({
+        _id:event.lendid
+
+      }).remove()
     } catch (e) {
       console.error(e)
     }
